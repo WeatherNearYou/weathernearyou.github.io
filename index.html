@@ -40,11 +40,11 @@
 				  zoom: 4,
 				  center: new google.maps.LatLng(0,0)
 				};
+				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				map.setPosition(pos);
 				map.setContent('Location found.');
 				map.setCenter(pos);
 				handleLocationError(true, pos, map.getCenter());
-				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				var marker = new google.maps.Marker({
     					position: pos,
     					map: map,
