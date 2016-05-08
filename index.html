@@ -44,10 +44,6 @@
 				infoWindow.setContent('Location found.');
 				map.setCenter(pos);
 				handleLocationError(true, infoWindow, map.getCenter());
-				  } else {
-					// Browser doesn't support Geolocation
-					handleLocationError(false, infoWindow, map.getCenter());
-				  }
 				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				var marker = new google.maps.Marker({
     					position: pos,
