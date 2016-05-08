@@ -28,7 +28,6 @@
 			var pos;
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function(position) {
-					console.log(position.coords.latitude);
 					pos = {
 						lat: position.coords.latitude,
 						lng: position.coords.longitude
@@ -57,7 +56,6 @@
 					  minZoom: 0,
 					  name: 'mymaptype'
 					});
-
 					map.overlayMapTypes.insertAt(0, myMapType);
 				// Add interaction listeners to make weather requests
 				google.maps.event.addListener(map, 'idle', checkIfDataRequested);
