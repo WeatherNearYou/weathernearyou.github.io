@@ -43,7 +43,7 @@
 				map.setPosition(pos);
 				map.setContent('Location found.');
 				map.setCenter(pos);
-				handleLocationError(true, map, map.getCenter());
+				handleLocationError(true, pos, map.getCenter());
 				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				var marker = new google.maps.Marker({
     					position: pos,
@@ -87,10 +87,10 @@
 				});
 			}
 			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-			  infoWindow.setPosition(pos);
-			  infoWindow.setContent(browserHasGeolocation ?
-									'Oops' :
-									'It seems something beyond our control has interfered with us finding your location. Either geolocation isn\'t supported on this browser or you need to enable it in settings.');
+			 	infoWindow.setPosition(pos);
+			 	infoWindow.setContent(browserHasGeolocation ?
+					'Oops' :
+					'It seems something beyond our control has interfered with us finding your location. Either geolocation isn\'t supported on this browser or you need to enable it in settings.');
 			}
 			var checkIfDataRequested = function() {
 			// Stop extra requests being sent
