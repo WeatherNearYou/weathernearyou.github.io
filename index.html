@@ -19,6 +19,7 @@
 			}
 		</style>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
 		<script type="text/javascript">
 			var map;
 			var geoJSON;
@@ -28,6 +29,7 @@
 			var pos;
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function(position) {
+					console.log(position.coords.latitude);
 					pos = {
 						lat: position.coords.latitude,
 						lng: position.coords.longitude
@@ -41,7 +43,7 @@
 				};
 				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				var marker = new google.maps.Marker({
-    					position: pos,
+    					position: {lat: 50, lng: -50},
     					map: map,
     					title: 'You'
 				});
