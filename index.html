@@ -19,8 +19,8 @@
 			}
 		</style>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-		<script src="http://openlayers.org/api/OpenLayers.js"></script>
-		<script>
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+		<script type="text/javascript">
 			var map;
 			var geoJSON;
 			var request;
@@ -31,20 +31,6 @@
 				  zoom: 4,
 				  center: new google.maps.LatLng(0,0)
 				};
-				map = new google.maps.Map(document.getElementById('map-canvas'),
-					mapOptions);
-					var myMapType = new google.maps.ImageMapType({
-					  getTileUrl: function(coord, zoom) {
-						return "http://maps.owm.io:8091/56ce0fcd4376d3010038aaa8/" + 
-							   zoom + "/" + coord.x + "/" + coord.y + "?hash=5";
-					  },
-					  tileSize: new google.maps.Size(256, 256),
-					  maxZoom: 9,
-					  minZoom: 0,
-					  name: 'mymaptype'
-					});
-
-					map.overlayMapTypes.insertAt(0, myMapType);
 				if (navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(function(position) {
 					  var pos = {
@@ -62,6 +48,20 @@
 					// Browser doesn't support Geolocation
 					handleLocationError(false, infoWindow, map.getCenter());
 				  }
+				map = new google.maps.Map(document.getElementById('map-canvas'),
+					mapOptions);
+					var myMapType = new google.maps.ImageMapType({
+					  getTileUrl: function(coord, zoom) {
+						return "http://maps.owm.io:8091/56ce0fcd4376d3010038aaa8/" + 
+							   zoom + "/" + coord.x + "/" + coord.y + "?hash=5";
+					  },
+					  tileSize: new google.maps.Size(256, 256),
+					  maxZoom: 9,
+					  minZoom: 0,
+					  name: 'mymaptype'
+					});
+
+					map.overlayMapTypes.insertAt(0, myMapType);
 				// Add interaction listeners to make weather requests
 				google.maps.event.addListener(map, 'idle', checkIfDataRequested);
 				// Sets up and populates the info window with details
